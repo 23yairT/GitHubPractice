@@ -22,7 +22,7 @@ struct Home: View {
     // Number of moves you can make
     @State var moves: [String] = Array(repeating: "", count: 9)
     // Identifiies the current player
-    @State var isPlaying = false
+    @State var isPlaying = true
     var body: some View {
         VStack{
             //Creates the Gridview
@@ -31,20 +31,31 @@ struct Home: View {
                 ForEach(0..<9, id: \.self) { index in
                     
                     ZStack {
-                        Color.white
+                        Color.red
                         
+                        Color.white
+                            .opacity(moves[index] == "" ? 1 : 0)
                         Text(moves[index])
                             .font(.system(size: 55))
                             .fontWeight(.heavy)
-                            .foregroundColor(.black)
+                            .foregroundColor(.yellow)
                     }
                         .frame(width: getWidth(), height: getWidth())
                         .cornerRadius(23)
+                        .rotation3DEffect(
+                            .init(degrees: moves[index] != "" ? 360 : 0),
+                            axis: (x: 0.0, y: 1.0, z: 0.0),
+                            anchor: .center,
+                            anchorZ: 0.0,
+                            perspective: 1.0
+                        )
                         .onTapGesture (perform: {
                             withAnimation(Animation.easeIn(duration: 0.01)) {
-                            
-                                moves[index] = isPlaying ? "X" : "O"
-                                isPlaying.toggle()
+                                
+                                if moves[index] == "" {
+                                    moves[index] = isPlaying ? "🇨🇳" : "🇺🇸"
+                                    isPlaying.toggle()
+                            }
                         }
                     })
                 }
