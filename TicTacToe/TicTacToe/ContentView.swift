@@ -97,10 +97,21 @@ struct Home: View {
             gameOver.toggle()
         }
         
-        if checkMoves(player: "O") {
+        else if checkMoves(player: "O") {
             msg = "Player O WON!!!!"
             gameOver.toggle()
+            
+        }else{
+            
+            let status = moves.contains { (value) -> Bool in
+                return value == ""
+            }
+            if !status {
+                msg = "Game Over! IT'S A TIE!"
+                gameOver.toggle()
+            }
         }
+        
     }
     func checkMoves(player: String) -> Bool {
         //Horizontal moves
