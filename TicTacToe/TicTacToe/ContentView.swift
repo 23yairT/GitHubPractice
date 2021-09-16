@@ -23,6 +23,9 @@ struct Home: View {
     @State var moves: [String] = Array(repeating: "", count: 9)
     // Identifiies the current player
     @State var isPlaying = true
+    @State var gameOver = false
+    @State var msg = ""
+    
     var body: some View {
         VStack{
             //Creates the Gridview
@@ -31,6 +34,7 @@ struct Home: View {
                 ForEach(0..<9, id: \.self) { index in
                     
                     ZStack {
+                        
                         Color.red
                         
                         Color.white
@@ -53,7 +57,7 @@ struct Home: View {
                             withAnimation(Animation.easeIn(duration: 0.01)) {
                                 
                                 if moves[index] == "" {
-                                    moves[index] = isPlaying ? "🇨🇳" : "🇺🇸"
+                                    moves[index] = isPlaying ? "X" : "O"
                                     isPlaying.toggle()
                             }
                         }
@@ -63,6 +67,22 @@ struct Home: View {
             
             .padding(15)
         }
+        
+        .onChange(of: moves, perform: {value in
+            checkWinner()
+        })
+        .alert(isPresented: $gameOver, content: {
+            Alert(title: Text("Winner"), message: Text(msg), dismissButton: .destructive(Text("Play Again"), action: {
+                
+                withAnimation(Animation.easeIn(duration: 0.5)) {
+                    
+                    moves.removeAll()
+                    moves = Array (repeating: "", count: 9)
+                    isPlaying = true
+                    
+                }
+            }))
+        })
     }
     // Calculates width of squares
     func getWidth() -> CGFloat {
@@ -70,7 +90,49 @@ struct Home: View {
         
         return width / 3
     }
+
+    func checkWinner(){
+        if checkMoves(player: "X") {
+            msg = "Player X WON!!!!"
+            gameOver.toggle()
+        }
+        
+        if checkMoves(player: "O") {
+            msg = "Player O WON!!!!"
+            gameOver.toggle()
+        }
+    }
+    func checkMoves(player: String) -> Bool {
+        //Horizontal moves
+        for contestant in stride(from: 0, to: 9, by: 3) {
+            if moves[contestant] == player && moves[contestant+1] == player && moves[contestant+2] == player {
+                
+                return true
+            }
+        }
+        //Vertical moves
+        for contestant in 0...2 {
+            if moves[contestant] == player && moves[contestant+3] == player && moves[contestant+6] == player {
+                    
+                return true
+            }
+            
+        }
+        // DIagonal moves
+        if moves [0] == player && moves [4] == player && moves [8] == player {
+            
+            return true
+        }
+        
+        if moves [2] == player && moves [4] == player && moves [6] == player {
+            
+            return true
+        }
+        
+        return false
+    }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
