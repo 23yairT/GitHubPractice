@@ -31,7 +31,7 @@ struct AddView: View {
                         .cornerRadius(10)
                 })
             }
-            padding(14)
+            .padding(14)
         }
         .navigationTitle("Add an Item 🦤")
     }
