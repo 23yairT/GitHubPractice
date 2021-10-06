@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72172E74270E170E00783BD4 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72172E73270E170E00783BD4 /* AddView.swift */; };
 		721B2659270CDA0100BAC7DC /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721B2658270CDA0100BAC7DC /* ToDoListApp.swift */; };
 		721B265B270CDA0100BAC7DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721B265A270CDA0100BAC7DC /* ContentView.swift */; };
 		721B265D270CDA0200BAC7DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 721B265C270CDA0200BAC7DC /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		72172E73270E170E00783BD4 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		721B2655270CDA0100BAC7DC /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		721B2658270CDA0100BAC7DC /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
 		721B265A270CDA0100BAC7DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				721B265A270CDA0100BAC7DC /* ContentView.swift */,
 				721B266A270CE01000BAC7DC /* ListRowView.swift */,
+				72172E73270E170E00783BD4 /* AddView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72172E74270E170E00783BD4 /* AddView.swift in Sources */,
 				721B265B270CDA0100BAC7DC /* ContentView.swift in Sources */,
 				721B2659270CDA0100BAC7DC /* ToDoListApp.swift in Sources */,
 				721B266B270CE01000BAC7DC /* ListRowView.swift in Sources */,
