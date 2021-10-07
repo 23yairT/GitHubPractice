@@ -16,12 +16,12 @@ class ListViewModel: ObservableObject {
     }
     
     func getItems() {
-        let newItems = [
-            ItemModel(title: "Todo item 1", isCompleted: false),
-            ItemModel(title: "Todo item 2", isCompleted: true),
-            ItemModel(title: "Todo item 3", isCompleted: false),
-        ]
-        item.append(contentsOf: newItems)
+        guard
+            let data = UserDefaults.standard.data(forKey: itemsKey),
+            let savedItems = try? JSONDecoder().decode([ItemModel].self, from: data)
+        else {return}
+        
+        self.item = savedItems
     }
     func deleteItem(indexSet: IndexSet) {
         item.remove(atOffsets: indexSet)
