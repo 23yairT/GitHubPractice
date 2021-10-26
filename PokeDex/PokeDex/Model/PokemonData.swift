@@ -10,7 +10,7 @@ import Foundation
 struct PokemonData: Decodable, Identifiable {
     let id: Int
     let name: String
-//    let IimageURL: String
+   // let imageURL: String
     let type: String
     let weight: Float
     let height: Float
