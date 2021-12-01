@@ -32,11 +32,17 @@ import CoreLocation
 final class LocationManager: NSObject, ObservableObject {
     
     var locationManager = CLLocationManager()
+    var previousLocation: CLLocation?
+    lazy var geocoder = CLGeocoder()
+    
+    @Published var locationString = ""
+    @Published var currentAddress = ""
     
     override init() {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.allowsBackgroundLocationUpdates = true
     }
     
     func startLocationServices() {
@@ -44,6 +50,33 @@ final class LocationManager: NSObject, ObservableObject {
             locationManager.startUpdatingLocation()
         } else {
             locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func fetchAddress(for place: Place) {
+        currentAddress = ""
+        geocoder.reverseGeocodeLocation(place.location) { [weak self] placemarks, error in
+            if let error = error {
+                fatalError(error.localizedDescription)
+            }
+            guard let placemark = placemarks?.first else {return}
+            if let streetNumber = placemark.subThoroughfare,
+               let street = placemark.thoroughfare,
+               let city = placemark.locality,
+               let state = placemark.administrativeArea {
+                DispatchQueue.main.async {
+                    self?.currentAddress = "\(streetNumber) \(street) \(city), \(state)"
+                }
+            } else if let city = placemark.locality, let state = placemark.administrativeArea {
+                DispatchQueue.main.async {
+                    self?.currentAddress = "\(city), \(state)"
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.currentAddress = "Address Unknown"
+                }
+            }
+                        
         }
     }
     
@@ -55,4 +88,27 @@ extension LocationManager: CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let lastest = locations.first else {return}
+        if previousLocation == nil {
+            previousLocation = lastest
+        } else {
+            let distanceInMeters = previousLocation?.distance(from: lastest) ?? 0
+            previousLocation = lastest
+            locationString = "You are \(Int(distanceInMeters)) meters from your start point."
+        }
+        print(lastest)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        guard let clError = error as? CLError else {return}
+        switch clError {
+        case CLError.denied:
+            print("Access denied")
+        default:
+            print("Catch all errors")
+        }
+    }
+    
 }

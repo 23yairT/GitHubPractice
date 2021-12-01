@@ -12,6 +12,7 @@
 		7276DB48274D77B9003A0272 /* Snapshotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DB47274D77B9003A0272 /* Snapshotter.swift */; };
 		7276DB4A274D8850003A0272 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276DB49274D8850003A0272 /* LocationManager.swift */; };
 		72AF785D27457B71005705D8 /* MapSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AF785C27457B71005705D8 /* MapSearchView.swift */; };
+		72B9739B275811B600A11125 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B9739A275811B600A11125 /* LocationView.swift */; };
 		72D5B45027443F1D0099E01B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D5B44F27443F1D0099E01B /* MapView.swift */; };
 		72D5B452274446390099E01B /* MapViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D5B451274446390099E01B /* MapViewUI.swift */; };
 		72D5B45427444EFC0099E01B /* LocationQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D5B45327444EFC0099E01B /* LocationQuery.swift */; };
@@ -32,6 +33,7 @@
 		7276DB47274D77B9003A0272 /* Snapshotter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshotter.swift; sourceTree = "<group>"; };
 		7276DB49274D8850003A0272 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		72AF785C27457B71005705D8 /* MapSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchView.swift; sourceTree = "<group>"; };
+		72B9739A275811B600A11125 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		72D5B44F27443F1D0099E01B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		72D5B451274446390099E01B /* MapViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewUI.swift; sourceTree = "<group>"; };
 		72D5B45327444EFC0099E01B /* LocationQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationQuery.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				72D5B44F27443F1D0099E01B /* MapView.swift */,
 				72D5B451274446390099E01B /* MapViewUI.swift */,
 				72AF785C27457B71005705D8 /* MapSearchView.swift */,
+				72B9739A275811B600A11125 /* LocationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				49CAD41E24E5A23C001B01B7 /* RoadView.swift in Sources */,
 				72AF785D27457B71005705D8 /* MapSearchView.swift in Sources */,
 				72D5B45427444EFC0099E01B /* LocationQuery.swift in Sources */,
+				72B9739B275811B600A11125 /* LocationView.swift in Sources */,
 				D3500EE824D2007D002922AB /* ContentView.swift in Sources */,
 				D3500EE624D2007D002922AB /* InterestingPlacesApp.swift in Sources */,
 				72D5B45027443F1D0099E01B /* MapView.swift in Sources */,
